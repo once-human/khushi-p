@@ -1,103 +1,69 @@
-import Image from "next/image";
+/* We are using CSS variables for fonts defined in layout.tsx, 
+   so no need to import font objects directly here unless for specific className usage not covered by variables.
+*/
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen flex flex-col items-center font-inter">
+      {/* Navbar */}
+      {/* Applied Framer styles: bg-[rgba(19,20,21,0.96)], backdrop-blur-md (equivalent to blur(12px)), shadow-lg */}
+      <nav 
+        className="w-full p-6 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-[rgba(19,20,21,0.96)] backdrop-blur-md shadow-lg"
+        style={{borderColor: 'rgb(26, 28, 29)', borderBottomWidth: '1px'}} // Matching Framer border
+      >
+        {/* Name: Reduced size to text-[30px] */}
+        <div className="text-[30px] leading-tight">
+          <span className="font-inter font-normal text-white">Khushi </span> 
+          <span className="font-taprom text-[#FF8080]">Banthia</span>
         </div>
+        {/* Resume Button: bg-[#2060DF], rounded-full (from Framer's border-radius:1000px) */}
+        <a
+          href="https://drive.google.com/file/d/1sOtR5Ji2WxyqlN36qNObNXM3JY9kmuzc/view?usp=sharing" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#2060DF] hover:bg-blue-700 text-white font-inter font-medium py-2 px-6 rounded-full text-sm shadow-lg"
+        >
+          Resume
+        </a>
+      </nav>
+
+      {/* Hero Section */}
+      {/* Adjusted top padding slightly if navbar height changes with font size, though it might be minor */}
+      <main className="flex flex-col items-center justify-center flex-grow pt-28 md:pt-32 pb-12 text-center px-4">
+        {/* Profile Image: Reduced size */}
+        <div className="w-40 h-40 md:w-48 md:h-48 rounded-full mb-8 overflow-hidden shadow-2xl">
+          <img
+            src="https://framerusercontent.com/images/ZrNOpVxjoAaCrh0UsiDXMjSxwg.jpg"
+            alt="Khushi Banthia"
+            width={192} // Corresponds to md:w-48
+            height={192} // Corresponds to md:h-48
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        {/* Tagline: Reduced font size to text-[26px] */}
+        <p 
+          className="font-square-peg text-[26px] text-[#FFE5E5] max-w-xl mb-10 tracking-[-0.5px] leading-[1.5em]"
+        >
+          I thrive on turning big messy ideas into sleek user friendly solutions.
+        </p>
+
+        {/* Let's Connect!: Reduced font size to text-xl */}
+        <a 
+          href="https://www.linkedin.com/in/khushi-banthia/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-inter font-medium text-xl text-[#2060DF] hover:underline tracking-[-0.03em]"
+        >
+          Let's Connect!
+        </a>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Placeholder for potential future sections if #contact is used
+      <section id="contact" className="w-full py-12">
+        <h2 className="text-2xl text-center">Contact Me</h2>
+      </section> 
+      */}
     </div>
   );
 }
